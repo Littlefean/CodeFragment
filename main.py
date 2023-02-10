@@ -6,46 +6,7 @@
 import sys
 
 from PyQt5.QtWidgets import *
-
-
-class Item(QHBoxLayout):
-    """表示横着的一条数据项"""
-
-    def __init__(self, title: str, content: str):
-        super().__init__()
-        self.title = title
-        self.content = content
-        self.init()
-
-    def init(self):
-        # 标题
-        labelLeft = QLabel()
-        labelLeft.setText(self.title)
-        labelLeft.setStyleSheet("background-color: skyblue")
-        # 内容
-        labelRight = QLabel()
-        labelRight.setText(self.content)
-        labelRight.setStyleSheet("outline: solid 1px")
-
-        # 复制按钮
-        btnCopy = QPushButton()
-        btnCopy.setText("复制")
-        btnCopy.setMaximumWidth(40)
-
-        # 删除按钮
-        btnDel = QPushButton()
-        btnDel.setText("X")
-        btnDel.setStyleSheet("background-color: pink;")
-        btnDel.setMaximumWidth(20)
-
-        # --- 添加
-        self.addWidget(labelLeft)
-        self.addWidget(labelRight)
-        self.addWidget(btnCopy)
-        self.addWidget(btnDel)
-        ...
-
-    ...
+from myitem import MyItem
 
 
 class MainWindow(QWidget):
@@ -84,9 +45,9 @@ class MainWindow(QWidget):
 
         for i in range(50):
             if i == 30:
-                layoutScrollDiv.addLayout(Item("aaa" * 10, "bb"))
+                layoutScrollDiv.addLayout(MyItem("aaa" * 10, "bb"))
             else:
-                layoutScrollDiv.addLayout(Item("aaa", "bb"))
+                layoutScrollDiv.addLayout(MyItem("aaa", "bb"))
 
         scroll = QScrollArea()
         scroll.setMinimumHeight(500)
