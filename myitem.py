@@ -8,11 +8,12 @@ import win32con
 class MyItem(QHBoxLayout):
     """表示横着的一条数据项"""
 
-    def __init__(self, title: str, content: str):
+    def __init__(self, title: str, content: str, fatherDiv: QVBoxLayout):
         super().__init__()
         self.title = title
         self.content = content
         # ====
+        self.father = fatherDiv
         # 标题
         self.labelLeft = QLabel()
         # 内容
@@ -58,20 +59,20 @@ class MyItem(QHBoxLayout):
         return res
 
     @classmethod
-    def fromFileName(cls, fileName: str):
+    def fromFileName(cls, fileName: str, fatherDiv):
         """通过文件名读取"""
         try:
             with open(f"myData/{fileName}", encoding="utf-8") as f:
                 content = f.read()
             # if len(content) > 15:
             #     content = content[:15] + "..."
-            return cls(fileName, content)
+            return cls(fileName, content, fatherDiv)
         except UnicodeDecodeError:
             print(fileName, "无法读取内容或者文件名")
 
-    def clear(self):
+    def clearContent(self):
         """清空当前这个条目里的所有内容"""
-        print("触发了clear")
+        # 移除所有子组件
         self.removeWidget(self.btnCopy)
         self.btnCopy.setParent(None)
 
@@ -80,6 +81,9 @@ class MyItem(QHBoxLayout):
         self.labelLeft.setParent(None)
         self.removeWidget(self.labelRight)
         self.labelRight.setParent(None)
+
+        # 从 父亲中移除当前这一整个
+
         ...
 
     ...
