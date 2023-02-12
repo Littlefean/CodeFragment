@@ -13,8 +13,9 @@ inputWord = ""
 dic = {}  # 数字编号 int ：文件名 str
 
 
-def init():
+def refreshDic():
     # 初始化 dic
+    dic.clear()
     for i, fileName in enumerate(os.listdir("myData")):
         dic[i] = fileName
 
@@ -40,7 +41,7 @@ def changeColor(color: int):
 
 def main():
     global inputWord
-    init()
+    refreshDic()
     showList()
     print("======")
     while True:
@@ -57,6 +58,17 @@ def main():
                 print("您输入的数字超出范围")
         elif inputWord == "open":
             os.system(f'start {os.path.abspath("myData")}')
+        elif inputWord == "refresh":
+            refreshDic()
+            changeColor(10)
+            sys.stdout.write("已经刷新\n")
+            changeColor(15)
+        elif inputWord == "help":
+            print("open  打开存放数据的文件夹")
+            print("help  查看帮助")
+            print("数字  选定某个标号的代码片段，复制到粘贴板")
+            print("refresh  刷新数据文件，当你更改了数据文件夹里的文件时候用")
+
         else:
             # 是正常的检索
             isFind = False
@@ -69,6 +81,7 @@ def main():
             if not isFind:
                 changeColor(12)
                 sys.stdout.write("没有搜索到相关内容" + '\n')
+                changeColor(15)
 
 
 if __name__ == "__main__":
