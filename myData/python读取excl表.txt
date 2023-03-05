@@ -1,0 +1,26 @@
+1. 打开指定文件
+
+   ```python
+   my_excl = xlrd.open_workbook(filename="test.xls")
+   ```
+
+   
+
+2. 获取文件的工作表
+
+   ```python
+   sheet_1 = my_excl.sheet_by_index(0)		# 通过索引获得
+   sheet_2 = my_excl.sheet_by_name("成绩表1")	# 通过名称获得
+   ```
+
+   
+
+3. 获取表格里的信息
+
+   ```python
+   line = sheet_1.row_value(0)		# 获取第0个行，返回数组
+   nameList = sheet_1.col_value(1)	# 获取第1个列，返回数组
+   data = sheet_1.cell_value(1, 3)	# 获取（y， x）具体的一个内容
+   ```
+
+   

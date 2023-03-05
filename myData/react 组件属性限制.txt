@@ -1,0 +1,12 @@
+// 属性限制，这些代码在类内
+        static propTypes = {
+            // name: PropTypes.string,
+            name: PropTypes.string.isRequired,  // 代表名字是必须传的
+            age: PropTypes.number,
+            speak: PropTypes.func,  // 函数类型
+        };
+        // 默认属性值
+        static defaultProps = {
+            sex: "不男不女",
+            age: 18
+        }

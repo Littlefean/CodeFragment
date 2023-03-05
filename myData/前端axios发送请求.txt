@@ -1,0 +1,29 @@
+axios.defaults.baseURL = "xxxx";
+axios({
+            method: "GET",
+            url: "http://localhost:3000/posts/2",
+        }).then(response => {
+            console.log(response);
+        });
+
+axios({
+            method: "POST",
+            url: "http://localhost:3000/posts/2",
+            data: {
+                title: "xxx",
+                content: "xxx"
+            }
+        }).then(response => {
+            console.log(response);
+        });
+
+// 方式2
+const duanzi = axios.create({
+            baseURL: "https://api.apiopen.top",
+            timeout: 2000
+        });
+        duanzi({
+            url: "/getJoke",
+        }).then(res => {
+            console.log(res);
+        })

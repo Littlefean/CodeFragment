@@ -1,0 +1,1 @@
+在confirm 前面加上window.

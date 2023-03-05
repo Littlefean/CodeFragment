@@ -1,0 +1,30 @@
+## 公用方法
+
+1. `position()` 获取当前鼠标位置
+2. `size()` 获取屏幕大小
+3. `onScreen(x, y=None)` 判断某点是否在屏幕上
+
+## 鼠标方法
+
+1. `mouseDown()`  按下鼠标
+2. `mouseUp()`  释放鼠标
+3. `mouseDown()`  按下鼠标
+4. `click()`  单击
+5. `leftClick()`  左键单击
+6. `middleClick()`  中单击
+7. `rightClick()`  右键单击
+8. `doubleClick()` 双击
+9. `tripleClick()` 三击
+10. `scroll()` 滚轮
+11. `moveTo()` 鼠标移动到
+12. `moveRel()` 将鼠标光标移动到屏幕上相对于当前光标的点位置
+13. `dragTo()` 执行鼠标拖动
+14. `dragRel()` 执行鼠标拖动 （相对）
+
+## 键盘方法
+
+1. `keyDown()` 按下某个键
+2. `keyUp()` 释放某个键
+3. `press()` 按下然后释放
+4. `typewrite()` 对每一个执行键盘键按下，然后释放
+5. `hotkey()` 对按顺序传递的参数执行向下键，然后执行按相反顺序释放键。

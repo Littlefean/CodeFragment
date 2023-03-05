@@ -1,0 +1,3 @@
+import jieba
+jieba.add_word("python科目")	# 添加词库
+ls = jieba.lcut("全国计算机等级考试Python科目")

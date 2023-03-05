@@ -1,0 +1,38 @@
+## 写入excl表
+
+---
+
+#### 步骤
+
+1. 创建一个excl文件
+
+   ```python
+   my_excl = xlwt.Workbook()
+   ```
+
+   
+
+2. 创建excl里的工作表
+
+   ```python
+   my_sheet = my_excl.add_sheet("工作表1", cell_overwrite_ok=True)
+   ```
+
+   
+
+3. 讲准备的数据写入工作表
+
+   ```python
+   my_sheet.write(1, 16, "内容")		# (y, x, String) x, y从零开始
+   my_sheet.write_merge(1, 2, 16, 16)	# (yStart, yEnd, xStart, xEnd) 合并单元格的书写方法
+   ```
+
+   
+
+4. 保存
+
+   ```python
+   my_excl.save("我的表格.xls")
+   ```
+
+   

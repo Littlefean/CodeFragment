@@ -1,0 +1,269 @@
+# Matplotlib
+
+---
+
+相关学习网站
+
+这个网站是官网，放在谷歌浏览器里翻译成中文就可以看看了
+
+https://matplotlib.org/stable/tutorials/introductory/sample_plots.html
+
+
+
+关于颜色过度的
+
+https://matplotlib.org/2.0.2/users/colormaps.html
+
+
+
+所有的实例
+
+https://matplotlib.org/stable/gallery/index.html
+
+
+
+## 导包
+
+```python
+import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
+```
+
+## 实例
+
+### 展示函数
+
+```python
+x = np.linspace(-1, 1, 50)  # 用到了numpy库，创建50个点
+y = 2*x+1
+plt.plot(x, y)
+plt.show()
+```
+
+#### 升级：同时展示两个函数窗口
+
+```python
+x = np.linspace(-1, 1, 50)  # 用到了numpy库，创建50个点
+y1 = x**2
+y2 = 2*x+1
+
+plt.figure()  # 有多个窗口的时候，要在每个plot前面加上figure()
+plt.plot(x, y1)
+
+plt.figure(num=3, figsize=(8, 5))  # 参数num决定窗口的顺序，参数figsize决定窗口大小
+plt.plot(x, y2, color='red', linewidth=1.0, linestyle='--')  # 红线，虚线，线粗1.0
+plt.show()
+```
+
+#### 升级：修改坐标轴
+
+```python
+plt.xlim((-1, 2))  # 限制坐标轴的范围，但是还是可以移动出去
+plt.ylim((-2, 3))
+plt.xlabel('I am x')  # x轴的名字
+plt.ylabel('I am y')
+
+new_ticks = np.linspace(-1, 2, 5)
+print(new_ticks)
+plt.xticks(new_ticks)
+plt.yticks([-1, -0.5, -0.1], ["bad", "nomal", "good"])  # 修改y轴对应文字，双引号内可以支持LaTeX语法
+plt.show()
+```
+
+#### 升级：显示图例
+
+```python
+plt.plot(x, y2, label='线1')
+plt.plot(x, y1, label='线2')
+plt.legend()	# 要加一个这个
+plt.show()
+```
+
+#### 升级：添加标注
+
+``` python
+# 标注点：
+x0 = 1
+y0 = 1
+plt.scatter(x0, y0)  # 画出来一个点
+
+# 标注虚线段
+plt.plot([x0, x0], [y0, 0], 'k--', lw=2.5)  # 'k--'表示黑色，虚线
+```
+
+### 图片
+
+```python
+fig = plt.figure(figsize=(20, 8), dpi=80)
+
+plt.savefig("./xxx.png")
+```
+
+##### 坐标轴
+
+```python
+# 更改密度
+plt.xticks([1, 3, ...])
+plt.yticks([...])
+
+# 更改字符串格式，比如时间格式
+x = [1, 60, 120...]
+_x = list(x)[::10]
+_xtick_lable = [f"{i}" for i in _x]
+plt.xticks(x, _xtick_lable, rotation=90)  # 可以让字标旋转一定度数
+
+# 解决中文不显示的问题
+font = {
+	"family": "MicroSoft YaHei",
+    "size": "larger"
+}
+matplotlib.rc("font", **font)
+
+# 第二种方法
+from matplotlib import font_manager
+
+my_font = font_manter.FontProperties(fname=".......字体路径")
+plt.xticks(x, _xtick_lable, rotation=90, fontproperties=my_font)  # 可以让字标旋转一定度数
+
+# 添加坐标轴描述信息
+plt.xlable("时间", fontproperties=my_font)
+plt.ylable("温度", fontproperties=my_font)
+plt.title("10点到12点每分钟的气温变化情况", fontproperties=my_font)
+```
+
+### 绘制网格
+
+```python
+plt.grid()  # 什么参数都不加也可以，x轴和y周上有多少刻度就画多少个
+
+"""grid函数的可选参数
+alpha=0.5
+"""
+```
+
+
+
+### 多个折线
+
+```python
+plt.plot(x, y1, label="自己", color="orange")
+plt.plot(x, y2, label="同桌", color="pink")
+
+# 把多线标签加到图上去
+plt.legend(prop=my_font)  # 设置中文字体的参数不一样了
+```
+
+
+
+### 散点图
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 1024
+X = np.random.normal(0, 1, n)
+Y = np.random.normao(0, 1, n)
+T = np.arctan2(X, Y)  # 颜色生成公式
+
+plt.scatter(X, Y, s=75, c=T, alpha=0.5)  # s是size，c是颜色
+plt.xlim((-1.5, 1.5))
+plt.ylim((-1.5, 1.5))
+plt.show()
+```
+
+### 3D数据
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# 定义一个窗口
+fig = plt.figure()
+# 把3D空间放到窗口里
+ax = Axes3D(fig)
+
+# XY数据
+X = np.arange(-4, 4, 0.25)
+Y = np.arange(-4, 4, 0.25)
+# 把xy轴放到地面上
+X, Y = np.meshgrid(X, Y)
+R = np.sqrt(X**2 + y**2)
+
+# 高度数据
+Z = np.sin(R)
+
+ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap=plt.get_cmap('rainbow'))  # 三维表面图
+ax.contourf(X, Y, Z, zdir='z', offset=-2, cmap='rainbow')  # 地面映射图
+ax.set_zlim(-2, 2)  # 限制z高度显示范围
+plt.show()
+
+```
+
+
+
+二维数组热图
+
+```python
+import matplotlib.pyplot as plt
+
+X = [i for i in range(256)]
+Y = [i for i in range(256)]
+Z = []
+
+for y in Y:
+    arr = []
+    for x in X:
+        arr.append(x ^ y)
+    Z.append(arr)
+# print(Z)
+# 作图
+plt.pcolormesh(X, Y, Z)
+plt.show()
+
+```
+
+多个子图的热图
+
+```python
+import matplotlib.pyplot as plt
+
+# 定义点的数量
+n = 500
+
+X = [i for i in range(256)]
+Y = [i for i in range(256)]
+Z1 = []
+Z2 = []
+Z3 = []
+
+for y in Y:
+    arr = []
+    arr2 = []
+    arr3 = []
+    for x in X:
+        arr.append(x & y)
+        arr2.append(x | y)
+        arr3.append(x ^ y)
+    Z1.append(arr)
+    Z2.append(arr2)
+    Z3.append(arr3)
+
+# print(Z)
+# 作图
+ax1 = plt.subplot(1, 3, 1)
+ax1.set_title("x & y")
+plt.pcolormesh(X, Y, Z1)
+
+ax2 = plt.subplot(1, 3, 2)
+ax2.set_title("x | y")
+plt.pcolormesh(X, Y, Z2)
+
+ax3 = plt.subplot(1, 3, 3)
+ax3.set_title("x ^ y")
+plt.pcolormesh(X, Y, Z3)
+plt.show()
+
+```
+

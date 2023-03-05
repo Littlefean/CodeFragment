@@ -1,0 +1,37 @@
+# -*- encoding: utf-8 -*-
+"""
+看一个哔哩哔哩视频的
+2021年11月14日
+by littlefean
+"""
+from bs4 import BeautifulSoup
+import jieba
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+
+def getWord(path: str):
+    """get a bilibili xml file to words"""
+    soup = BeautifulSoup(open(path, encoding="utf-8"))
+    dArr = soup.select("d")
+    sumWord = ""
+    for d in dArr:
+        sumWord += " " + d.text
+    return sumWord
+
+
+def main():
+    sumWord = getWord(r"D:\桌面\王道计算机网络视频\王道计算机考研 计算机网络 (P1. 1.1.1 概念、组成、功能和分类).cmt.xml")
+
+    ls = jieba.lcut(sumWord)
+    allWord = " ".join(ls)
+    wc = WordCloud(width=1920, height=1080,
+                   font_path=r'C:\Users\20281\AppData\Local\Microsoft\Windows\Fonts\STXIHEI.TTF').generate(allWord)
+
+    plt.imshow(wc, interpolation='bilinear')
+    plt.axis('off')
+    plt.show()
+    ...
+
+
+main()

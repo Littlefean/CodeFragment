@@ -1,0 +1,19 @@
+import ctypes
+import sys
+
+
+def changeColor(color: int):
+    """
+    更改打印的颜色
+    1 深蓝  9 蓝色 3 浅蓝 11 浅浅蓝
+    4 大红色 12 红色 13 紫红 5 紫色
+    15 亮白 7 白色 8 灰色 0 黑色
+    14 亮黄  6 黄色  
+    2 绿色 10 绿色
+    """
+    std_out_handle = ctypes.windll.kernel32.GetStdHandle(-11)
+    return ctypes.windll.kernel32.SetConsoleTextAttribute(std_out_handle, color)
+
+
+changeColor(4)
+sys.stdout.write("输入你想打印的文字" + '\n')
