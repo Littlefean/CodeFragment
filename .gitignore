@@ -2,4 +2,4 @@
 __pycache__
 test.py
 
-myData/*
+/myData/*.txt
