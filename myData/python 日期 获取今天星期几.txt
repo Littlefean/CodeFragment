@@ -1,0 +1,4 @@
+from datetime import datetime
+d = datetime.now()
+print(d.strftime("%A"))  # 字符串的星期六中文
+print(d.isoweekday())  # 1 2 3 4 5 6 7

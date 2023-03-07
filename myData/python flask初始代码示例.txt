@@ -1,0 +1,42 @@
+import json
+from flask import Flask
+from flask import request
+from flask_cors import CORS  # 导入模块
+
+app = Flask(__name__)
+CORS(app, supports_credentials=True)
+
+
+@app.route('/')
+def f1():
+    return "hello"
+
+
+@app.route('/a', methods=['POST'])
+def f2():
+    data = json.loads(request.get_data(as_text=True))
+    print(data)
+    return {"a": 15}
+
+@app.route('/list', methods=['POST'])
+def f3():
+    data = json.loads(request.get_data(as_text=True))
+    print(data)
+    return json.dumps([
+        {"name": "li", "age": 18},
+        {"name": "lis", "age": 185},
+        {"name": "lis", "age": 138},
+        {"name": "lidd", "age": 18},
+        {"name": "lisaw", "age": 182},
+        {"name": "lidsc", "age": 112},
+    ])
+
+def main():
+    print("服务器开始运行了")
+    print("app run")
+    app.run(port=10086)
+    return None
+
+
+if __name__ == "__main__":
+    main()
