@@ -1,0 +1,1 @@
+<textarea ref={uuidCopyEle} value={uuid} readOnly="readOnly"/>

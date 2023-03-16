@@ -1,0 +1,5 @@
+from datetime import timedelta, datetime
+
+delta1 = datetime(2022, 6, 30, 20) - datetime(2022, 2, 2, 1)
+print(delta1)
+print(type(delta1))

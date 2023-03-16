@@ -1,0 +1,15 @@
+// 最开始引入
+import {Navigate} from "react-router-dom";
+
+// state中
+this.state = {
+            gotoLink: <div/>,
+}
+
+// dom中
+const {gotoLink}= this.state;
+
+{gotoLink}插入一个
+
+// js中
+this.setState({gotoLink: <Navigate to="/matching"/>})

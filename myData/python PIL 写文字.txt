@@ -1,0 +1,11 @@
+def writeWordOnImg(im: Image, word: str):
+    # 先画一些干扰图案
+    imDraw = ImageDraw.Draw(im)
+
+    for char in word:
+        fontSize = randint(15, 50)
+        font = ImageFont.truetype("msyh.ttc", fontSize)
+        randLoc = (randint(0, 500 - 50), randint(0, 500 - 50))  # 文字的左上角位置
+        randColor = (randint(50, 255), randint(50, 255), randint(50, 255))
+        # 左上角起始位置，
+        imDraw.text(randLoc, char, fill=randColor, font=font)

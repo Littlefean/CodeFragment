@@ -1,0 +1,27 @@
+/**
+ * 在范围 [a, b) 上随机整数
+ */
+function randint(a, b) {
+    let dif = b - a;
+    let res = Math.random() * dif;
+    res += a;
+    return Math.floor(res);
+}
+
+/**
+ * 在范围 [a, b) 上随机小数
+ */
+function uniform(a, b) {
+    let dif = b - a;
+    let res = Math.random() * dif;
+    res += a;
+    return res;
+}
+
+/**
+ * 在数组中随机选择一个元素
+ * @param arr
+ */
+function choice(arr) {
+    return arr[randint(0, arr.length)];
+}

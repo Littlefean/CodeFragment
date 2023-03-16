@@ -1,0 +1,1 @@
+<img src={require("./img/普通模式.png")}/>

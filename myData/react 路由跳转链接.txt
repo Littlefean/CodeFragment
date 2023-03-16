@@ -1,0 +1,17 @@
+import { Navigate, NavLink, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import About from './pages/About';
+
+
+<div>
+          <NavLink to="/about">about</NavLink>
+          <NavLink to="/home">home</NavLink>
+        </div>
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/home" element={<Home />} />
+          {/* 页面一上来的默认界面 */}
+          <Route path="/" element={<Navigate to="/about" />} />
+          {/* <Navigate to="/about" /> 这个组件只要渲染了就会引起视图的切换，可以嵌入到各种js代码中 */}
+          {/* <Navigate to="/about" replace={true}/> */}
+        </Routes>

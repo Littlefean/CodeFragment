@@ -1,0 +1,40 @@
+/**
+ * 二维数组类
+ * by littlefean
+ */
+export default class Array2d {
+    constructor(w, h, ele = 0) {
+        this.width = w;
+        this.height = h;
+
+        this.arr = [];
+        for (let y = 0; y < this.height; y++) {
+            let line = [];
+            for (let x = 0; x < this.width; x++) {
+                line.push(ele);
+            }
+            this.arr.push(line);
+        }
+    }
+
+    set(x, y, value) {
+        if (0 <= x && x < this.width) {
+            if (0 <= y && y < this.height) {
+                this.arr[y][x] = value;
+                return;
+            }
+        }
+        console.warn(x, y, "位置越界了");
+    }
+
+    get(x, y) {
+        if (0 <= x && x < this.width) {
+            if (0 <= y && y < this.height) {
+                return this.arr[y][x]
+            }
+        }
+        console.warn(x, y, "位置越界了");
+        return null;
+    }
+
+}

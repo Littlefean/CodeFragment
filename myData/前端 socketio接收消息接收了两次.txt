@@ -1,0 +1,9 @@
+https://blog.csdn.net/zsj777/article/details/83143559
+
+记得让socket关闭
+
+// 链接关闭
+        socket.on('disconnect', (timeout) => {
+            console.log('链接丢失')
+            socket.close();  // 关闭连接
+        });

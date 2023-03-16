@@ -1,0 +1,15 @@
+from datetime import datetime
+
+t = datetime.now()
+# 强制转换字符串
+print(str(t))
+# 格式化 转换 字符串
+print(t.strftime("%Y/%m/%d %H:%M:%S"))
+print(t.strftime("%Y-%m-%d %H:%M:%S"))
+print(t.strftime("%Y/%m/%d"))
+print(t.strftime("%Y-%m-%d"))
+
+# str 转 对象
+string = t.strftime("%Y-%m-%d %H:%M:%S")
+tObj = datetime.strptime(string, "%Y-%m-%d %H:%M:%S")
+print(tObj)

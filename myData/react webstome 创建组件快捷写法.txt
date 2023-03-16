@@ -1,0 +1,29 @@
+1. rcc + tab键 - - 用ES6模块系统创建一个React组件类 
+2. rccp + tab键 - - 创建一个带有PropTypes和ES6模块系统的React组件类 
+3. rcfc + tab键 - - 创建一个带有PropTypes和所有生命周期方法以及ES6模块系统的React组件类 
+4. rcjc + tab键 - - 用ES6模块系统创建一个React组件类(无导出) 
+rdp + tab键 - - 快速生成defau
+
+
+rcc + tab键 - - 用ES6模块系统创建一个React组件类
+
+rccp + tab键 - - 创建一个带有PropTypes和ES6模块系统的React组件类
+
+rcfc + tab键 - - 创建一个带有PropTypes和所有生命周期方法以及ES6模块系统的React组件类
+
+rcjc + tab键 - - 用ES6模块系统创建一个React组件类（无导出）
+
+下面的自己可以尝试一下哦，笔者只是做了介绍就不放图了哈~
+rdp + tab键 - - 快速生成defaultProps
+rpc + tab键 - - 用PropTypes和ES6 moudle系统创建一个React纯组件类
+rrc + tab键 - - 创建一个连接到redux的React组件类
+rrdc + tab键 - - 创建一个通过dispatch连接到redux的React组件类
+rsc + tab键 - - 创建没有PropTypes和ES6模块系统的无状态React组件
+rscp + tab键 - - 创建有PropTypes和ES6模块系统的无状态React组件
+rsf + tab键 - - 以命名函数的形式创建无状态的React组件，不使用PropTypes
+rsfp + tab键 - - 使用PropTypes将无状态的React组件作为命名函数创建
+rsi + tab键 - - 创建无状态的React组件，不使用PropTypes和ES6模块系统，但使用隐式返回和道具
+rwwd + tab键 - - 在没有导入的情况下，在ES6模块系统中创建一个有构造函数、空状态、proptypes和导出的React组件类。(主要用于React时，proptype由webpack提供插件提供)
+————————————————
+版权声明：本文为CSDN博主「xiangzidz」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/weixin_42965828/article/details/115497088

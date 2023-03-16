@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ssss</title>
+</head>
+<body>
+	<input type="checkbox" class="abc">
+	<button class="btn">sss</button>
+</body>
+<script>
+let ele = document.querySelector(".abc");
+let btn = document.querySelector(".btn");
+
+btn.onclick = function () {
+	console.log(ele.checked);  // 不是ele.value，这里变了
+}
+</script>
+</html>

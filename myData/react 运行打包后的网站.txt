@@ -1,0 +1,4 @@
+# 先安装服务器运行工具
+npm i serve -g
+
+serve -s build

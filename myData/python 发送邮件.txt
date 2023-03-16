@@ -1,0 +1,12 @@
+import pathlib
+import yagmail
+
+psw = pathlib.Path("emailPassword.txt").read_text().strip()
+email = yagmail.SMTP(
+    host='smtp.qq.com',
+    user="2385190373@qq.com",
+    password=psw,
+    smtp_ssl=True
+)
+
+email.send("??@qq.com", "标题", "内容")

@@ -1,0 +1,3 @@
+ele.oninput = function(ev) {
+	console.log(ev.target.value);
+}

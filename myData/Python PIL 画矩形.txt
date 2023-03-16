@@ -1,0 +1,3 @@
+imDraw = ImageDraw.Draw(im)
+
+imDraw.rectangle((left , top, w, h), fill=(r,g,b),outline="red", width=5)

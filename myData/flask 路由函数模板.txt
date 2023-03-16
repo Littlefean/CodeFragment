@@ -1,0 +1,18 @@
+import json
+from flask import request
+from .flaskInit import app
+
+
+@app.route('/loginByPassword', methods=['POST'])
+def loginByPassword():
+    """
+    :return:
+    """
+    data = json.loads(request.get_data(as_text=True))
+    userName = data["userName"]
+    password = data["password"]
+    res = {
+        "status": False,
+        "text": "用户不存在"
+    }
+    return json.dumps(res)
