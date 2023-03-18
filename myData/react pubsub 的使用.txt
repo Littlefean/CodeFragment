@@ -1,0 +1,17 @@
+// npm install pubsub-js
+import PubSub from "pubsub-js"
+
+
+    // 接收消息的组件类中
+    componentDidMount() {
+        this.token = PubSub.subscribe("消息标识名称", (_, data) => {
+            console.log("接收到了消息", data);
+        });
+    }
+    componentWillUnmount() {
+        // 取消消息订阅
+        PubSub.unsubscribe(this.token);
+    }
+
+// 消息发布组件的一个函数中
+        PubSub.publish("消息标识名称", { "name": "tom", "age": 18 });

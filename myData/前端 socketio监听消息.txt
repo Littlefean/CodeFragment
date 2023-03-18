@@ -1,0 +1,4 @@
+SOCKET_OBJ.on(`前端${USER_DATA.name}接收好友请求发送结果`, (res) => {
+                let data = JSON.parse(res);
+                this.setState({resultStr: data.text});
+            });
