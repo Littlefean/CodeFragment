@@ -1,0 +1,10 @@
+  // 绝对定位居中
+  position: absolute;
+  @h: 100px;
+  @w: 100px;
+  width: @w;
+  height: @h;
+  left: 50%;
+  top: 50%;
+  margin-left: -(@w/2);
+  margin-top: -(@h/2);

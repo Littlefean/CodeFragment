@@ -1,0 +1,5 @@
+SOCKET_OBJ.on('disconnect', (timeout) => {
+      console.log('链接丢失')
+      myAlert("服务器断开连接，1秒后重连");
+      setTimeout(() => SOCKET_OBJ.connect(), 1000)
+    });

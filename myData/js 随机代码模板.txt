@@ -25,3 +25,27 @@ function uniform(a, b) {
 function choice(arr) {
     return arr[randint(0, arr.length)];
 }
+
+function randomWeibull(scale, shape) {
+  // 生成一个 0-1 之间的随机数
+  const u = Math.random();
+
+  // 使用逆变换法生成威布尔分布随机数
+  const x = scale * Math.pow(-Math.log(u), 1 / shape);
+
+  return x;
+}
+
+
+function randomNormal(mu, sigma) {
+  // 生成两个 0-1 之间的随机数
+  const u1 = Math.random();
+  const u2 = Math.random();
+
+  // 使用 Box-Muller 转换生成正态分布随机数
+  const z0 = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
+  const x = mu + z0 * sigma;
+
+  return x;
+}
+

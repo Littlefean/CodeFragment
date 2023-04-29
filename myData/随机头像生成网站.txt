@@ -1,0 +1,8 @@
+当下常用的一些随机生成小头像的网站包括：
+
+Adorable Avatars（https://adorable.io/avatars/）
+UI Faces（https://uifaces.com/generators）
+Cute Robot Generator（https://robohash.org/）
+Random User（https://randomuser.me/photos）
+Avataaars Generator（https://getavataaars.com/）
+这些网站都提供了各种风格的小头像生成，可以根据自己的需要进行选择。

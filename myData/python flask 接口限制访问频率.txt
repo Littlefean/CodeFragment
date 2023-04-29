@@ -1,0 +1,16 @@
+# 全局初始化
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+
+limiter = Limiter(key_func=get_remote_address)
+def scopeDefault():
+    # limiter的默认参数
+    return request.remote_addr != "127.0.0.1"
+
+
+# 1秒最多访问一次
+@limiter.shared_limit("1/second")
+# 1秒最多访问10次
+@LIMITER.shared_limit("10/second", scope=scopeDefault)
+# 57秒访问一次
+@LIMITER.shared_limit("1/57 seconds")

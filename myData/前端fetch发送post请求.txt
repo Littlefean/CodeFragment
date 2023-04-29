@@ -1,0 +1,9 @@
+  fetch("http://127.0.0.1:10009/getEmailCode", {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({"userEmail": "2028140990@qq.com"}),
+  }).then(
+      res => res.json()
+  ).then(
+      data => console.log(data)
+  );

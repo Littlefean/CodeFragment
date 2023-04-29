@@ -1,0 +1,6 @@
+import html2text
+
+html_string = '<h1>Heading</h1><p>This is a paragraph</p><ul><li>Item 1</li><li>Item 2</li></ul>'
+markdown_string = html2text.html2text(html_string)
+
+print(markdown_string)

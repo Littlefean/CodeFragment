@@ -1,0 +1,20 @@
+1、安装pipreqs
+
+    pip install pipreqs
+
+2、进入当前项目根目录下执行
+
+    pipreqs . --encoding=utf8 --force
+
+
+    # “.” 指的是将导出依赖包的文件放在当前目录下
+
+    # “--encoding=utf8” 指的是存放文件的编码为utf-8,否则会报错
+
+    # “--force” --force 强制执行，当生成目录下的requirements.txt存在时强子覆盖
+
+3、在新的环境下，进入项目根目录执行以下脚本完成所有依赖包的安装
+
+    pip install -r requirements.txt
+
+这样做的好处可以保证依赖包的版本跟开发环境一样，避免了很多坑。
