@@ -1,0 +1,16 @@
+def is_prime(n):
+    if n <= 1:
+        # 0和1不是质数
+        return False
+    elif n == 2 or n == 3:
+        # 2和3是质数
+        return True
+    elif n % 2 == 0:
+        # 偶数都不是质数，除了2本身
+        return False
+    else:
+        # 在3到n^(1/2)的范围内判断是否有因子
+        for i in range(3, int(n**0.5)+1, 2):
+            if n % i == 0:
+                return False
+        return True
