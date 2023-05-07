@@ -1,4 +1,4 @@
 @echo off
 git add .
-git commit -m "更新了代码数据库"
-git push
+git commit -m "update code database"
+git push https://github.com/Littlefean/CodeFragment
