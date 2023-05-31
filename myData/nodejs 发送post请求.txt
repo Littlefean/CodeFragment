@@ -1,0 +1,44 @@
+/**
+ * 自动端口号为项目的端口，localhost
+ * @param path {String} 例如 '/api/FriendlyMatch'
+ * @param postJson  直接传入对象，不用字符串化
+ * @param resFunc {Function} (res) => { ... }
+ */
+function postLocal(path, postJson, resFunc) {
+  const postDataStr = JSON.stringify(postJson);
+
+  const options = {
+    hostname: 'localhost',
+    port: 10009,
+    path: path,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Content-Length': Buffer.byteLength(postDataStr, 'utf8'),
+    }
+  };
+
+  const req = http.request(options, (res) => {
+    let dataBuffer = []; // 缓存数据的数组
+    let dataLength = 0;  // 缓存数据的总长度
+
+    res.on('data', (chunk) => {
+      dataBuffer.push(chunk);
+      dataLength += chunk.length;
+    });
+
+    res.on('end', () => {
+      // 将缓存的数据合并为一个 Buffer
+      const responseData = Buffer.concat(dataBuffer, dataLength);
+      const res = JSON.parse(responseData.toString());
+      resFunc(res);
+    });
+  });
+
+  req.on('error', (error) => {
+    console.error(`请求出现错误[${path}]`);
+    console.error(error);
+  });
+  req.write(postDataStr);
+  req.end();
+}
