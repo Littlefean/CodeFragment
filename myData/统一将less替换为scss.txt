@@ -1,0 +1,4 @@
+ls -Recurse | % { if ($_.Extension -eq ".less") { echo $_.FullName; mv $_.FullName ( $_.FullName -replace "less", "scss" ) } }
+
+
+这是shikukuya给出的代码
