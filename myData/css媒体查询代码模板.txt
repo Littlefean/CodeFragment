@@ -1,0 +1,23 @@
+// 手机
+@media (max-width: 479px) {}
+
+// 宽手机
+@media (min-width: 480px) and (max-width: 767px) {}
+
+// 小平板
+@media (min-width: 768px) and (max-width: 991px) {}
+
+// 中平板
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+// 大平板
+@media (min-width: 1200px) and (max-width: 1439px) {}
+
+// 小中电脑
+@media (min-width: 1440px) and (max-width: 1919px) {}
+
+// 大电脑
+@media (min-width: 1920px) and (max-width: 3839px) {}
+
+// 4K大屏幕
+@media (min-width: 3840px) {}
