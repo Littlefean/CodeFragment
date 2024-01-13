@@ -3,13 +3,15 @@
 
 """
 import os
+import sys
 from typing import Dict
+import ctypes
 
-from match import m1
 import win32clipboard
 import win32con
-import sys
-import ctypes
+import keyboard
+
+from match import m1
 
 DICT: Dict[int, str] = {}  # 数字编号 int ：文件名 str
 
@@ -48,6 +50,11 @@ def change_color(color: int):
 
 
 def main():
+    # 注册事件回调函数
+    import key_hooks
+    keyboard.hook(key_hooks.on_ctrl_s)
+
+    print('注册完毕')
     refresh_dic()
     show_list()
     print("======")
