@@ -15,25 +15,25 @@ DICT: Dict[int, str] = {}  # 数字编号 int ：文件名 str
 
 
 def refresh_dic():
-    """刷新操作，此操作影响全局变量dic"""
+    """刷新操作，此操作影响全局变量DICT"""
     # 初始化 dic
     DICT.clear()
-    for i, file_name in enumerate(os.listdir("myData")):
+    for i, file_name in enumerate(os.listdir("code")):
         DICT[i] = file_name
 
 
 def show_list():
-    """展示列表"""
-    for i, file_name in enumerate(os.listdir("myData")):
+    """展示全部的代码文件列表"""
+    for i, file_name in enumerate(os.listdir("code")):
         print(str(i).zfill(3), file_name)
 
 
 def get_content_to_clipboard(file_name):
     """
     根据文件名，把文件名复制到粘贴板
-    fileName: "xxx.txt"
+    file_name: "xxx.txt"
     """
-    with open(f"myData/{file_name}", encoding="utf-8") as f:
+    with open(f"code/{file_name}", encoding="utf-8") as f:
         content = f.read()
     win32clipboard.OpenClipboard()
     win32clipboard.EmptyClipboard()
@@ -64,7 +64,7 @@ def main():
             else:
                 print("您输入的数字超出范围")
         elif input_word == "open":
-            os.system(f'start {os.path.abspath("myData")}')
+            os.system(f'start {os.path.abspath("code")}')
         elif input_word == "refresh":
             refresh_dic()
             change_color(10)
@@ -79,7 +79,7 @@ def main():
         else:
             # 是正常的检索
             is_find = False
-            for i, file_name in enumerate(os.listdir("myData")):
+            for i, file_name in enumerate(os.listdir("code")):
                 if m1(input_word.split(), file_name):
                     is_find = True
                     change_color(10)
