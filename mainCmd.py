@@ -3,36 +3,37 @@
 
 """
 import os
+from typing import Dict
+
 from match import m1
 import win32clipboard
 import win32con
 import sys
 import ctypes
 
-inputWord = ""
-DIC = {}  # 数字编号 int ：文件名 str
+DICT: Dict[int, str] = {}  # 数字编号 int ：文件名 str
 
 
-def refreshDic():
+def refresh_dic():
     """刷新操作，此操作影响全局变量dic"""
     # 初始化 dic
-    DIC.clear()
-    for i, fileName in enumerate(os.listdir("myData")):
-        DIC[i] = fileName
+    DICT.clear()
+    for i, file_name in enumerate(os.listdir("myData")):
+        DICT[i] = file_name
 
 
-def showList():
+def show_list():
     """展示列表"""
-    for i, fileName in enumerate(os.listdir("myData")):
-        print(str(i).zfill(3), fileName)
+    for i, file_name in enumerate(os.listdir("myData")):
+        print(str(i).zfill(3), file_name)
 
 
-def getContentToClipboard(fileName):
+def get_content_to_clipboard(file_name):
     """
     根据文件名，把文件名复制到粘贴板
     fileName: "xxx.txt"
     """
-    with open(f"myData/{fileName}", encoding="utf-8") as f:
+    with open(f"myData/{file_name}", encoding="utf-8") as f:
         content = f.read()
     win32clipboard.OpenClipboard()
     win32clipboard.EmptyClipboard()
@@ -40,37 +41,36 @@ def getContentToClipboard(fileName):
     win32clipboard.CloseClipboard()
 
 
-def changeColor(color: int):
+def change_color(color: int):
     """更改打印颜色"""
     std_out_handle = ctypes.windll.kernel32.GetStdHandle(-11)
     return ctypes.windll.kernel32.SetConsoleTextAttribute(std_out_handle, color)
 
 
 def main():
-    global inputWord
-    refreshDic()
-    showList()
+    refresh_dic()
+    show_list()
     print("======")
     while True:
         # os.system("cls")
         print("请输入搜索关键字，空格隔开，如果只输入数字表示选定")
-        inputWord = input(">>>")
-        if inputWord.isdigit():
+        input_word = input(">>>")
+        if input_word.isdigit():
             # 纯数字，表示选定了
-            inputNum = int(inputWord)
-            if inputNum in DIC:
-                getContentToClipboard(DIC[inputNum])
+            input_num = int(input_word)
+            if input_num in DICT:
+                get_content_to_clipboard(DICT[input_num])
                 print("内容已经进入您的粘贴板！")
             else:
                 print("您输入的数字超出范围")
-        elif inputWord == "open":
+        elif input_word == "open":
             os.system(f'start {os.path.abspath("myData")}')
-        elif inputWord == "refresh":
-            refreshDic()
-            changeColor(10)
+        elif input_word == "refresh":
+            refresh_dic()
+            change_color(10)
             sys.stdout.write("已经刷新\n")
-            changeColor(15)
-        elif inputWord == "help":
+            change_color(15)
+        elif input_word == "help":
             print("open  打开存放数据的文件夹")
             print("help  查看帮助")
             print("数字  选定某个标号的代码片段，复制到粘贴板")
@@ -78,17 +78,17 @@ def main():
 
         else:
             # 是正常的检索
-            isFind = False
-            for i, fileName in enumerate(os.listdir("myData")):
-                if m1(inputWord.split(), fileName):
-                    isFind = True
-                    changeColor(10)
-                    sys.stdout.write(str(i).zfill(3) + " " + fileName + '\n')
-            changeColor(15)
-            if not isFind:
-                changeColor(12)
+            is_find = False
+            for i, file_name in enumerate(os.listdir("myData")):
+                if m1(input_word.split(), file_name):
+                    is_find = True
+                    change_color(10)
+                    sys.stdout.write(str(i).zfill(3) + " " + file_name + '\n')
+            change_color(15)
+            if not is_find:
+                change_color(12)
                 sys.stdout.write("没有搜索到相关内容" + '\n')
-                changeColor(15)
+                change_color(15)
 
 
 if __name__ == "__main__":
