@@ -1,8 +1,6 @@
 # -*- encoding: utf-8 -*-
 """
 看一个哔哩哔哩视频的
-2021年11月14日
-by littlefean
 """
 from bs4 import BeautifulSoup
 import jieba
@@ -21,12 +19,12 @@ def getWord(path: str):
 
 
 def main():
-    sumWord = getWord(r"D:\桌面\王道计算机网络视频\王道计算机考研 计算机网络 (P1. 1.1.1 概念、组成、功能和分类).cmt.xml")
+    sumWord = getWord(r"D....")
 
     ls = jieba.lcut(sumWord)
     allWord = " ".join(ls)
     wc = WordCloud(width=1920, height=1080,
-                   font_path=r'C:\Users\20281\AppData\Local\Microsoft\Windows\Fonts\STXIHEI.TTF').generate(allWord)
+                   font_path=r'C:\Users\...\AppData\Local\Microsoft\Windows\Fonts\STXIHEI.TTF').generate(allWord)
 
     plt.imshow(wc, interpolation='bilinear')
     plt.axis('off')
